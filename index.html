@@ -3,233 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DicomBridge — DICOM → PACS шлюз | Скачать бесплатно</title>
-<meta name="description" content="DicomBridge — бесплатный Windows-шлюз DICOM → PACS. Мониторинг папки, фикс кириллицы, теги, UID, транслитерация, C-STORE. Скачать последнюю версию автоматически с GitHub.">
+<title>DicomBridge — DICOM → PACS за секунды</title>
+<meta name="description" content="DicomBridge — бесплатный шлюз DICOM → PACS. Скачай и забудь.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div id="preloader">
-  <div class="pre-core"><img src="assets/logo-small.png" alt="DicomBridge"><div class="pre-ring"></div></div>
-  <div class="pre-text">DICOM<span>BRIDGE</span></div>
-  <div class="pre-bar"><i></i></div>
-</div>
-
 <canvas id="bg3d"></canvas>
-<div class="grid-overlay"></div>
-<div class="glow glow-a"></div>
-<div class="glow glow-b"></div>
-<div id="cursor"></div>
 
-<header id="nav">
-  <a class="brand" href="#top">
-    <span class="brand-logo"><img src="assets/logo-small.png" alt="logo"></span>
-    <span class="brand-name">DICOM<b>BRIDGE</b></span>
-    <span class="ver-pill" id="navVersion"><span class="dot"></span><span data-nav-ver>…</span></span>
-  </a>
-  <nav class="links">
-    <a href="#features">Возможности</a>
-    <a href="#how">Как работает</a>
+<header class="nav">
+  <a class="brand" href="#top"><img src="assets/logo-small.png" alt="DicomBridge"><span>DicomBridge</span></a>
+  <nav>
+    <a href="#why">Почему</a>
+    <a href="#features">Функции</a>
     <a href="#download">Скачать</a>
-    <a href="#install">Установка</a>
-    <a href="#faq">FAQ</a>
+    <a href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">GitHub</a>
   </nav>
-  <div class="nav-cta">
-    <a class="gh-btn" href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">
-      <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-      GitHub
-    </a>
-    <a class="dl-btn small" href="#download">Скачать <span>↓</span></a>
-    <button id="burger" aria-label="меню"><i></i><i></i><i></i></button>
-  </div>
+  <a class="btn-dark" href="#download">Download</a>
 </header>
-<div id="mobileMenu">
-  <a href="#features">Возможности</a>
-  <a href="#how">Как работает</a>
-  <a href="#download">Скачать</a>
-  <a href="#install">Установка</a>
-  <a href="#faq">FAQ</a>
-</div>
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- HERO как у upscayl: центр, коротко -->
   <section class="hero">
-    <div class="hero-left reveal">
-      <div class="live-badge"><span class="pulse"></span><span id="liveBadge">LIVE • проверяем GitHub-релизы…</span></div>
-      <h1>DICOM<br><span class="grad">BRIDGE</span><span class="thin">→ PACS</span></h1>
-      <p class="sub">Фоновый шлюз для клиник: следит за папкой, чинит кириллицу и теги, <b>отправляет исследования на PACS по C-STORE</b>. Бесплатно. Без телеметрии. Оригинал никогда не трогает.</p>
-      <div class="hero-btns">
-        <a href="#download" class="btn-primary" id="heroDownload">
-          <span class="btn-glow"></span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>
-          <span>Скачать <b data-hero-ver>v1.0.4</b></span>
-          <small data-hero-size>Windows • ~282 МБ</small>
-        </a>
-        <a class="btn-ghost" href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">Исходники на GitHub ↗</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><b data-stat-ver>v1.0.4</b><span>актуальная версия</span></div>
-        <div class="stat"><b data-stat-count>—</b><span>скачиваний</span></div>
-        <div class="stat"><b>0 ₽</b><span>лицензии и телеметрия</span></div>
-        <div class="stat"><b>Win 10/11</b><span>+ Linux сборка</span></div>
-      </div>
-      <div class="sysline mono">C-STORE • C-ECHO • Explicit LE • cp1251 → ISO_IR 144 • UID • Patient ID</div>
+    <div class="pill" id="verPill">v1.0.4 • бесплатно • open source</div>
+    <h1>От аппарата<br>до PACS <span>за секунды</span></h1>
+    <p class="lead">DicomBridge следит за папкой и сам отправляет исследования на PACS.<br>Скачал. Указал папку. Забыл.</p>
+    <div class="hero-cta">
+      <a class="btn-big" href="#download">Get Started</a>
+      <a class="btn-link" href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
+    <div class="hero-visual">
+      <img src="assets/logo.png" alt="DicomBridge" class="hero-logo">
+      <div class="flow">
+        <div class="flow-card">📁<b>Папка</b><span>аппарат пишет DICOM</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-card hot">◈<b>DicomBridge</b><span>чинит и отправляет</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-card">🗄️<b>PACS</b><span>исследование в архиве</span></div>
+      </div>
+    </div>
+    <div class="works-with">РАБОТАЕТ С&nbsp;&nbsp;·&nbsp;&nbsp;Orthanc&nbsp;&nbsp;·&nbsp;&nbsp;Sante&nbsp;&nbsp;·&nbsp;&nbsp;Agfa&nbsp;&nbsp;·&nbsp;&nbsp;DCM4CHEE&nbsp;&nbsp;·&nbsp;&nbsp;любой C-STORE</div>
+  </section>
 
-    <div class="hero-right reveal">
-      <div class="holo-card tilt" id="holoCard">
-        <div class="holo-ring r1"></div>
-        <div class="holo-ring r2"></div>
-        <div class="holo-ring r3"></div>
-        <img class="holo-logo" src="assets/logo.png" alt="DicomBridge 3D logo">
-        <div class="holo-scan"></div>
-        <div class="holo-hud hud-tl mono">MODALITY // CT_MR_XA</div>
-        <div class="holo-hud hud-tr mono"><span class="ok">●</span> PACS LINKED</div>
-        <div class="holo-hud hud-bl mono" id="hudFile">IM_0042.dcm → <b>OK</b></div>
-        <div class="holo-hud hud-br mono">AE: DICOMBRIDGE</div>
+  <!-- 3 коротких блока как у upscayl -->
+  <section id="why" class="rows">
+    <div class="row">
+      <div class="row-text">
+        <h2>Кракозябры вместо фамилий?</h2>
+        <p>Знакомо. Русские имена приезжают в PACS нечитаемыми.<br>DicomBridge чинит кодировку сам: cp1251 → норма. Без ручной правки.</p>
       </div>
-      <div class="term glass">
-        <div class="term-head"><i></i><i></i><i></i><span class="mono">dicombridge — live pipeline</span></div>
-        <div class="term-body mono" id="termBody">
-          <div><span class="t-dim">[watcher]</span> новый файл: <span class="t-blue">CT_2026_10_04_001.dcm</span></div>
-          <div><span class="t-dim">[fix]</span> cp1251 → ISO_IR 144 <span class="t-green">✓</span> UID <span class="t-green">✓</span></div>
-          <div><span class="t-dim">[send]</span> C-STORE → ORTHANC:4242 <span class="t-green">✓ 142 ms</span></div>
-        </div>
+      <div class="row-card"><span class="bad">Ð˜Ð²Ð°Ð½Ð¾Ð²</span><span class="arr">→</span><span class="good">Иванов</span></div>
+    </div>
+    <div class="row flip">
+      <div class="row-text">
+        <h2>Строгий PACS всё отвергает?</h2>
+        <p>Сжатые файлы, чужие UID, неверные теги — отказ.<br>Мост сам транскодирует, правит UID и теги. Принимают с первого раза.</p>
       </div>
+      <div class="row-card"><span class="bad">rejected ✕</span><span class="arr">→</span><span class="good">stored ✓</span></div>
+    </div>
+    <div class="row">
+      <div class="row-text">
+        <h2>Просто работает в фоне</h2>
+        <p>Никаких окон и дежурств у монитора. Оригиналы не трогает, ошибки складывает в очередь, присылает статистику.</p>
+      </div>
+      <div class="row-card mono">watch ✓&nbsp;&nbsp;fix ✓&nbsp;&nbsp;send ✓</div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee"><div class="marquee-track" id="marqueeTrack">
-    <span>DICOM → PACS</span><i>✦</i><span>C-STORE</span><i>✦</i><span>КИРИЛЛИЦА FIX</span><i>✦</i><span>ТРАНСЛИТЕРАЦИЯ</span><i>✦</i><span>АНОНИМИЗАЦИЯ</span><i>✦</i><span>АВТОЗАПУСК</span><i>✦</i><span>БЕСПЛАТНО</span><i>✦</i>
-    <span>DICOM → PACS</span><i>✦</i><span>C-STORE</span><i>✦</i><span>КИРИЛЛИЦА FIX</span><i>✦</i><span>ТРАНСЛИТЕРАЦИЯ</span><i>✦</i><span>АНОНИМИЗАЦИЯ</span><i>✦</i><span>АВТОЗАПУСК</span><i>✦</i><span>БЕСПЛАТНО</span><i>✦</i>
-  </div></div>
-
-  <!-- FEATURES -->
-  <section id="features" class="section">
-    <div class="sec-head reveal">
-      <div class="kicker">01 // ВОЗМОЖНОСТИ</div>
-      <h2>Больничный комбайн <span class="grad">в одном трее</span></h2>
-      <p>Поставил — забыл. Мост сам подбирает файлы, лечит метаданные и доставляет в PACS.</p>
-    </div>
-    <div class="cards">
-      <div class="card tilt reveal"><div class="ic">📡</div><h3>Фоновый мониторинг</h3><p>Watchdog следит за папкой импорта, ждёт стабильности файла, игнорирует <span class="mono">.tmp / .log</span> и мусор от аппаратов. UNC-предупреждения, запрет пересечения папок.</p><div class="tag">watcher.py</div></div>
-      <div class="card tilt reveal"><div class="ic">🔤</div><h3>Кириллица без кракозябр</h3><p>Перекодировка <span class="mono">cp1251 → ISO_IR 144 / UTF-8</span>, анализ файла до отправки. Русские ФИО доезжают до PACS читаемыми.</p><div class="tag">encoding_fix</div></div>
-      <div class="card tilt reveal"><div class="ic">🏷️</div><h3>Теги, UID, Patient ID</h3><p>Правила редактирования тегов с JSON импорт/экспорт, проверка и генерация UID, детерминированный Patient ID.</p><div class="tag">tags • uid</div></div>
-      <div class="card tilt reveal"><div class="ic">🔀</div><h3>Транслит + анонимизация</h3><p>ГОСТ 7.79, упрощённая и украинская транслитерация (КМУ 55). Однокнопочная анонимизация для науки и демо.</p><div class="tag">translit • anon</div></div>
-      <div class="card tilt reveal"><div class="ic">⚡</div><h3>Умный C-STORE</h3><p>Точечные presentation contexts, авто-транскод JPEG / JPEG-LS / JPEG 2000 / RLE → Explicit LE в памяти. Строгие PACS принимают с первого раза. Анти-дубли (seen-кэш).</p><div class="tag">pynetdicom</div></div>
-      <div class="card tilt reveal"><div class="ic">🧰</div><h3>Инженеру — кайф</h3><p>Очередь ошибок на SQLite, статистика, лог с ротацией, ZIP-пакет диагностики, мульти-копии <span class="mono">--config</span>, автозапуск, трей, «О программе».</p><div class="tag">queue • support</div></div>
+  <!-- фичи одной строкой как у upscayl -->
+  <section id="features" class="features">
+    <h2>DicomBridge — это</h2>
+    <div class="feat-grid">
+      <div><b>Бесплатно и open source</b><span>Скачал один раз — твоё навсегда. Без телеметрии.</span></div>
+      <div><b>Не трогает оригиналы</b><span>Работает только с копиями. Источник в безопасности.</span></div>
+      <div><b>Кириллица и теги</b><span>Кодировка, UID, Patient ID, транслитерация.</span></div>
+      <div><b>Умная отправка</b><span>C-STORE / C-ECHO, авто-транскод сжатия.</span></div>
+      <div><b>Очередь ошибок</b><span>Недоставленное ждёт и повторяет само.</span></div>
+      <div><b>Тихий фон</b><span>Трей, автозапуск, автоочистка. Поставил — забыл.</span></div>
     </div>
   </section>
 
-  <!-- HOW -->
-  <section id="how" class="section">
-    <div class="sec-head reveal">
-      <div class="kicker">02 // КОНВЕЙЕР</div>
-      <h2>От аппарата до архива <span class="grad">за секунды</span></h2>
-    </div>
-    <div class="pipe">
-      <div class="step reveal"><div class="n">01</div><h3>Аппарат сохраняет</h3><p>КТ / МРТ / рентген пишет DICOM в папку импорта. Оригинал <b>никогда не изменяется</b>.</p></div>
-      <div class="arrow">→</div>
-      <div class="step reveal"><div class="n">02</div><h3>Мост лечит</h3><p>Копия в экспорт-папку → фикс кодировки, теги, UID, Patient ID, транслит.</p></div>
-      <div class="arrow">→</div>
-      <div class="step reveal"><div class="n">03</div><h3>PACS принимает</h3><p>C-STORE на ваш сервер (Orthanc, Sante, Agfa…). Ошибки — в очередь с повтором.</p></div>
-      <div class="arrow">→</div>
-      <div class="step reveal"><div class="n">04</div><h3>Вы отдыхаете</h3><p>Статистика, лог, автоочистка. Пакет для поддержки — одной кнопкой.</p></div>
-    </div>
-  </section>
-
-  <!-- DOWNLOAD -->
-  <section id="download" class="section">
-    <div class="sec-head reveal">
-      <div class="kicker">03 // СКАЧАТЬ • LIVE С GITHUB</div>
-      <h2>Забирай <span class="grad">последнюю сборку</span></h2>
-      <p>Сайт напрямую подключён к репозиторию <a class="mono link" href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">dosik74/DicomBridge</a> — как только выходит релиз на GitHub, он <b>автоматически появляется здесь</b>. Без ручных обновлений страницы сборки.</p>
-    </div>
-
-    <div class="dl-grid">
-      <div class="latest glass reveal" id="latestCard">
-        <div class="latest-top">
-          <div class="latest-badge"><span class="pulse"></span> LATEST RELEASE</div>
-          <div class="mono dim" id="latestDate">…</div>
-        </div>
-        <h3 id="latestName">Загружаем релиз…</h3>
-        <p id="latestBody" class="latest-body">Подключаемся к GitHub API…</p>
-        <div class="latest-meta mono">
-          <span id="latestSize">—</span><span>•</span><span id="latestCount">—</span><span>•</span><span>Windows .exe</span>
-        </div>
-        <div class="latest-btns">
-          <a class="btn-primary" id="latestBtn" href="https://github.com/dosik74/DicomBridge/releases/latest/download/DicomBridge-Setup.exe">
-            <span class="btn-glow"></span>
-            ⬇ Скачать установщик
-          </a>
-          <a class="btn-ghost" href="https://github.com/dosik74/DicomBridge/releases" target="_blank" rel="noopener">Все релизы ↗</a>
-        </div>
-        <div class="auto-note mono"><span class="ok">●</span> auto-sync: api.github.com/repos/dosik74/DicomBridge/releases <button id="refreshBtn" title="Обновить">⟳</button></div>
+  <!-- скачивание: минимум, live с github -->
+  <section id="download" class="download">
+    <h2>Скачай DicomBridge</h2>
+    <p class="dl-sub" id="dlSub">Тянем последнюю версию с GitHub…</p>
+    <div class="dl-card">
+      <img src="assets/logo-small.png" alt="">
+      <div class="dl-info">
+        <b id="dlName">DicomBridge …</b>
+        <span id="dlMeta">Windows • …</span>
       </div>
-
-      <div class="all-list glass reveal">
-        <div class="all-head"><h3>История версий</h3><span class="mono dim" id="relCount">…</span></div>
-        <div id="releasesList"><div class="loading">Тянем релизы с GitHub…</div></div>
-      </div>
+      <a class="btn-big" id="dlBtn" href="https://github.com/dosik74/DicomBridge/releases/latest/download/DicomBridge-Setup.exe">Download for Windows</a>
+    </div>
+    <div class="dl-foot">
+      <span id="dlAlt"></span>
+      <a href="https://github.com/dosik74/DicomBridge/releases" target="_blank" rel="noopener">Все версии на GitHub ↗</a>
     </div>
   </section>
 
-  <!-- INSTALL -->
-  <section id="install" class="section">
-    <div class="sec-head reveal">
-      <div class="kicker">04 // УСТАНОВКА</div>
-      <h2>Старт за <span class="grad">5 минут</span></h2>
-    </div>
-    <div class="inst-grid">
-      <div class="inst reveal"><div class="n">1</div><h3>Скачай и запусти</h3><p>Русский мастер спросит путь, создаст ярлыки, предложит автозапуск с Windows.</p><div class="code mono">DicomBridge-Setup.exe <span class="dim"># ~282 МБ, Win 10/11</span></div></div>
-      <div class="inst reveal"><div class="n">2</div><h3>Настрой PACS</h3><p>Host, порт, AE Title (напр. <span class="mono">127.0.0.1 : 4242 / ORTHANC</span>). Жми «Проверить соединение» — C-ECHO.</p><div class="code mono">host=127.0.0.1 port=4242 remote=ORTHANC</div></div>
-      <div class="inst reveal"><div class="n">3</div><h3>Укажи папки</h3><p>Папка импорта (куда пишет аппарат) и экспорта. Кидай DICOM — всё улетит само.</p><div class="code mono">python main.py --config D:\hosp1\config.ini</div></div>
-    </div>
-    <div class="req glass reveal">
-      <div><b>Windows 10/11</b><span>основная платформа, установщик с мастером</span></div>
-      <div><b>Linux</b><span>build.sh + install.sh, автозапуск через XDG</span></div>
-      <div><b>Python 3.11+</b><span>только для запуска из исходников</span></div>
-      <div><b>PACS</b><span>Orthanc / любой DICOM SCP с C-STORE</span></div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="sec-head reveal">
-      <div class="kicker">05 // FAQ</div>
-      <h2>Частые <span class="grad">вопросы</span></h2>
-    </div>
-    <div class="faq-list">
-      <details class="reveal" open><summary>Это бесплатно? Есть подвох?</summary><p>Полностью бесплатно, без лицензий и телеметрии. Отказ от ответственности — в LICENSE.txt: ПО «как есть», не является медицинским изделием.</p></details>
-      <details class="reveal"><summary>Оригиналы файлов в безопасности?</summary><p>Да. Мост работает только с копиями в экспорт-папке. Источник никогда не модифицируется.</p></details>
-      <details class="reveal"><summary>Как сайт узнаёт о новых версиях?</summary><p>Через публичный GitHub API: при каждой загрузке страница запрашивает <span class="mono">/repos/dosik74/DicomBridge/releases</span> и перерисовывает блок скачивания. Новый релиз = новая карточка автоматически.</p></details>
-      <details class="reveal"><summary>Несколько отделений на одном ПК?</summary><p>Запускайте независимые копии: <span class="mono">main.py --config D:\hosp1\config.ini --minimized</span>. У каждой свой конфиг, очередь и имя профиля. Папки копий не должны пересекаться.</p></details>
-      <details class="reveal"><summary>Строгий PACS отвергает файлы?</summary><p>С v1.0.3 отправка идёт точечными контекстами + авто-транскод сжатых синтаксисов в Explicit LE. Плюс seen-кэш против дублей после рестарта.</p></details>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta reveal">
-    <img src="assets/logo-small.png" alt="">
-    <h2>Мост между аппаратом <span class="grad">и архивом</span></h2>
-    <p>Одна установка — и кириллица, теги и отправка больше не ваша головная боль.</p>
-    <a class="btn-primary big" href="#download"><span class="btn-glow"></span>⬇ Скачать DicomBridge бесплатно</a>
+  <section class="final">
+    <h2>Psst… попробуй.<br>Это бесплатно 🤫</h2>
+    <a class="btn-big" href="#download">Get Started — это не больно ;)</a>
   </section>
 
 </main>
 
 <footer>
-  <div class="f-grid">
-    <div class="f-brand"><img src="assets/logo-small.png" alt=""><div><b>DICOMBRIDGE</b><span>фоновый шлюз DICOM → PACS</span></div></div>
-    <div class="f-links"><a href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">Исходники</a><a href="https://github.com/dosik74/DicomBridge/releases" target="_blank" rel="noopener">Релизы</a><a href="https://github.com/dosik74/DicomBridge/issues" target="_blank" rel="noopener">Issues</a></div>
-    <div class="mono dim">site auto-syncs with github api • black & blue • three.js</div>
+  <div class="foot">
+    <a class="brand" href="#top"><img src="assets/logo-small.png" alt=""><span>DicomBridge</span></a>
+    <div class="foot-links">
+      <a href="https://github.com/dosik74/DicomBridge" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/dosik74/DicomBridge/releases" target="_blank" rel="noopener">Релизы</a>
+      <a href="https://github.com/dosik74/DicomBridge/issues" target="_blank" rel="noopener">Issues</a>
+    </div>
   </div>
+  <div class="copy">© 2026 DicomBridge · бесплатно · не является медицинским изделием</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
